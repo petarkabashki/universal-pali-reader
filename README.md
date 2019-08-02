@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# universal-pali-reader
-=======
+
 # universal-pali-reader
 
 ## Run Project

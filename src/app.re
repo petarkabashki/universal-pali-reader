@@ -1,21 +1,47 @@
-/* You're familiar handleClick from ReactJS. This mandatorily takes the payload,
-   then the `self` record, which contains state (none here), `handle`, `reduce`
-   and other utilities */
-let handleClick = (_event) => Js.log("clicked!");
 
-/* `make` is the function that mandatorily takes `children` (if you want to use
-   `JSX). `message` is a named argument, which simulates ReactJS props. Usage:
-
-   `<Component1 message="hello" />`
-
-   Which desugars to
-
-   `React.createElement(
-     Component1.make,
-     Component1.makeProps(~message="hello", ())
-   )` */
 [@react.component]
-let make = (~message) =>
-  <div onClick={handleClick}>
-    {ReasonReact.string(message)}
-  </div>;
+let make = () => {
+  /* <Welcome>
+    {ReasonReact.string("Click me!")}
+  </Welcome> */
+  let cardHeader = (~children) => <Card.Header>children</Card.Header>;
+
+  <Accordion>
+    <Card>
+      <Accordion.Toggle as_={cardHeader} eventKey="0">
+        {ReasonReact.string("Click me!")}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="0">
+        <Card.Body>{ReasonReact.string("Hello! I'm the body")}</Card.Body>
+      </Accordion.Collapse>
+    </Card>
+    <Card>
+      <Accordion.Toggle as_={cardHeader} eventKey="1">
+        {ReasonReact.string("Click me! 002")}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="1">
+        <Card.Body>{ReasonReact.string("Hello! I'm the body 002")}</Card.Body>
+      </Accordion.Collapse>
+    </Card>
+    <Card>
+      <Accordion.Toggle as_={cardHeader} eventKey="2">
+        {ReasonReact.string("Click me! 003")}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="2">
+        <Card.Body>{ReasonReact.string("Hello! I'm the body 003")}</Card.Body>
+      </Accordion.Collapse>
+    </Card>
+  </Accordion>
+  };
+    /* <Card>
+      <Accordion.Toggle as_={Card.Header} eventKey="0">
+      {ReasonReact.string("Click me!")}
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="0">
+        <Card.Body>{ReasonReact.string("Hello! I'm the body")}</Card.Body>
+      </Accordion.Collapse>
+    </Card> */
+
+
+    /* <p> {ReasonReact.string("Click me!")}</p>
+    <p>{ReasonReact.string("Hello! I'm the body")}</p> */
